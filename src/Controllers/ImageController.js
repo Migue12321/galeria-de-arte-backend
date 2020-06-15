@@ -3,21 +3,21 @@ const router = express.Router();
 
 let CONNECTIONS = require('../Adapters/server.js');
 
-const DoctorRepository = require('../Adapters/Repositories/ImageRepository');
+const ImageRepository = require('../Adapters/Repositories/ImageRepository');
 
-let doctorRepository;
+let imageRepository;
 
-const CreateDoctorRequestModel = require("../Adapters/DTOs/Image/CreateImageRequestModel");
-const UpdateDoctorRequestModel = require("../Adapters/DTOs/Image/UpdateImageRequestModel");
-const DoctorInteractor = require('../Interactors/DoctorInteractor');
+const createImageRequestModel = require("../Adapters/DTOs/Image/CreateImageRequestModel");
+const UpdateImageRequestModel = require("../Adapters/DTOs/Image/UpdateImageRequestModel");
+const ImageInteractor = require('../Interactors/ImageInteractor');
 
 (async function () {
-    doctorRepository = new DoctorRepository(CONNECTIONS.database);
+    imageRepository = new ImageRepository(CONNECTIONS.database);
 })();
 
 router.get("", async function (request, response) {
-    let doctorInteractor = new DoctorInteractor(doctorRepository);
-    let users = await doctorInteractor.getAll()
+    let imageInteractor = new ImageInteractor(imageRepository);
+    let users = await imageInteractor.getAll()
         .catch(error => {
             console.log("ERROR getting all doctors: ", error);
         });
@@ -26,49 +26,41 @@ router.get("", async function (request, response) {
 
 router.get("/:id", async function (request, response) {
     let id = request.params.id;
-    let doctorInteractor = new DoctorInteractor(doctorRepository);
-    let doctor = await doctorInteractor.getDoctorById(id)
+    let imageInteractor = new ImageInteractor(imageRepository);
+    let doctor = await imageInteractor.getImageById(id)
         .catch(error => { 
             console.log("ERROR getting a doctor with id: "+ id + ": ", error);
         });
     response.send(doctor);
 });
-router.get("/search_specialty/:specialty", async function (request, response) {
-    let specialty = request.params.specialty;
-    let doctorInteractor = new DoctorInteractor(doctorRepository);
-    let doctor;
-    if(specialty === " ")
-        doctor = await doctorInteractor.getAll()
-            .catch(error => {
-            console.log("ERROR getting doctors: ", error);
-        });
-    else
-        doctor = await doctorInteractor.getAllBySpecialty(specialty)
-            .catch(error => {
+router.get("/for-sale", async function (request, response) {
+    let imageInteractor = new ImageInteractor(imageRepository);
+    let doctor = await imageInteractor.getAllForSale()
+        .catch(error => {
             console.log("ERROR getting doctors: ", error);
         });
     response.send(doctor);
 });
 
 
-router.post("/register", async function (request, response) {
-    let doctorRequestModel = new CreateDoctorRequestModel();
-    let insertDoctorInteractor = new DoctorInteractor(doctorRepository);
-    let requestModel = doctorRequestModel.getRequestModel(request.body);
-    let isInsertedDoctor = false;
+router.post("/", async function (request, response) {
+    let imageRequestModel = new createImageRequestModel();
+    let imageInteractor = new ImageInteractor(imageRepository);
+    let requestModel = imageRequestModel.getRequestModel(request.body);
+    let isInserted = {success:false, message: "Error inserting"};
     try {
-        isInsertedDoctor = await insertDoctorInteractor.create(requestModel);
+        isInserted = await imageInteractor.create(requestModel);
     } catch (error) {
         console.log("ERROR registering a doctor: ", error);
     }
-    response.send(isInsertedDoctor);
+    response.send(isInserted);
 });
 
 router.put("", async function (request, response) {
     let id = request.body.id;
-    let updateDoctorRequestModel = new UpdateDoctorRequestModel();
+    let updateDoctorRequestModel = new UpdateImageRequestModel();
     let requestModel = updateDoctorRequestModel.getRequestModel(request.body);
-    let doctorInteractor = new DoctorInteractor(doctorRepository);
+    let doctorInteractor = new ImageInteractor(imageRepository);
     let putResponse = false;
     try {
         putResponse = await doctorInteractor.update(id, requestModel);
@@ -79,9 +71,9 @@ router.put("", async function (request, response) {
 });
 router.put("/update-attention-schedule/", async function (request, response) {
     let id = request.body.id;
-    let updateDoctorRequestModel = new UpdateDoctorRequestModel();
+    let updateDoctorRequestModel = new UpdateImageRequestModel();
     let requestModel = updateDoctorRequestModel.getRequestModel(request.body);
-    let doctorInteractor = new DoctorInteractor(doctorRepository);
+    let doctorInteractor = new ImageInteractor(imageRepository);
     let putResponse = false;
     try {
         putResponse = await doctorInteractor.updateAttentionSchedule(id, requestModel);
@@ -94,7 +86,7 @@ router.put("/update-attention-schedule/", async function (request, response) {
 
 router.delete("/:id", async function (request, response) {
     let id = request.params.id;
-    let doctorInteractor = new DoctorInteractor(doctorRepository);
+    let doctorInteractor = new ImageInteractor(imageRepository);
     let deleteResponse = false;
     try {
         deleteResponse = await doctorInteractor.delete(id);

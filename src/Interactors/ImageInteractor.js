@@ -1,27 +1,20 @@
 const DoctorValidator = require('../Entities/Validators/DoctorValidator');
 
-class DoctorInteractor {
+class ImageInteractor {
 
-    constructor(doctorRepository) {
-        this.doctorRepository = doctorRepository;
+    constructor(imageRepository) {
+        this.imageRepository = imageRepository;
     }
 
-    async getOneDoctorAccount(id) {
-        return await this.doctorRepository.getDoctorAccountById(id);
-    }
-
-    async getAllDoctorsAccount() {
-        return await this.doctorRepository.getAllDoctorAccounts();
-    }
-    async getDoctorById(id) {
-        return await this.doctorRepository.getOne(id);
+    async getImageById(id) {
+        return await this.imageRepository.getOne(id);
     }
 
     async getAll() {
-        return await this.doctorRepository.getAll();
+        return await this.imageRepository.getAll();
     }
-    async getAllBySpecialty(specialty) {
-        return await this.doctorRepository.getAllBySpecialty(specialty);
+    async getAllForSale() {
+        return await this.imageRepository.getAllForSale();
     }
 
     async create(doctor) {
@@ -30,7 +23,7 @@ class DoctorInteractor {
         if(!response.success)
             return response;
         try {
-            await this.doctorRepository.saveDoctorAccount(doctor);
+            await this.imageRepository.insert(doctor);
         } catch (error) {
             return this.prepareDBErrorResponse(error);
         }
@@ -40,8 +33,8 @@ class DoctorInteractor {
     async delete(idAuth) {
         let response;
         try {
-            let doctor = await this.getDoctorById(idAuth)
-            await this.doctorRepository.deleteDoctorAccount(doctor[0].accountId,doctor[0]._id);
+            let doctor = await this.getImageById(idAuth)
+            await this.imageRepository.deleteDoctorAccount(doctor[0].accountId,doctor[0]._id);
              response = this.prepareDBDeleteResponse(idAuth, response);
 
         } catch (error) {
@@ -57,7 +50,7 @@ class DoctorInteractor {
             return response;
         }
         try {
-            await this.doctorRepository.update(idAuth, user);
+            await this.imageRepository.update(idAuth, user);
         } catch (error) {
             return this.prepareDBDeleteResponse(error);
         }
@@ -67,7 +60,7 @@ class DoctorInteractor {
     async updateAttentionSchedule(idAuth, attentionSchedule) {
         let response = true;
         try {
-            this.doctorRepository.update(idAuth, attentionSchedule);
+            this.imageRepository.update(idAuth, attentionSchedule);
         } catch (error) {
             return this.prepareDBDeleteResponse(error);
         }
@@ -86,4 +79,4 @@ class DoctorInteractor {
 
 }
 
-module.exports = DoctorInteractor;
+module.exports = ImageInteractor;

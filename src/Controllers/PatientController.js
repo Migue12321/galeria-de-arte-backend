@@ -3,20 +3,16 @@ const router = express.Router();
 let CONNECTIONS = require('../Adapters/server.js');
 
 const PatientRepository = require('../Adapters/Repositories/PatientRepository');
-const AppointmentRepository = require('../Adapters/Repositories/AppointmentRepository');
 
 let patientRepository;
-let appointmentRepository;
 
 const CreatePatientRequestModel = require("../Adapters/DTOs/Patient/CreatePatientRequestModel");
 const UpdatePatientRequestModel = require('../Adapters/DTOs/Patient/UpdatePatientRequestModel');
 
 const PatientInteractor = require('../Interactors/PatientInteractor');
-const AppointmentInteractor = require('../Interactors/AppointmentInteractor');
 
 (async function () {
     patientRepository = new PatientRepository(CONNECTIONS.database);
-    appointmentRepository = new AppointmentRepository(CONNECTIONS.database);
 })();
 
 router.get("", async function (request, response) {
@@ -67,7 +63,6 @@ router.put("", async function (request, response) {
 
 router.delete("/:id", async function (request, response) {
     let id = request.params.id;
-    let appointmentInteractor = new AppointmentInteractor(appointmentRepository, null,appointmentRepository)
     let patientInteractor = new PatientInteractor(patientRepository, appointmentInteractor);
     let deleteResponse = false;
     try {

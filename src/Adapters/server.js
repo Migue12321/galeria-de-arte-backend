@@ -14,22 +14,12 @@ app.use(cors());
 const serverPort = process.env.PORT || '4000';
 app.set('port', serverPort);
 
-let mongoMemoryServer;
-if (process.env.ENV === 'TEST') {
-    const { MongoMemoryServer } = require('mongodb-memory-server');
-    mongoMemoryServer = new MongoMemoryServer();
-}
-
 let DBConnection;
 let FirebaseConnection;
 
 (async function () {
     let mongoUri;
     let mongoDBName;
-    if (process.env.ENV == 'TEST') {
-        mongoUri = await mongoMemoryServer.getConnectionString();
-        mongoDBName = await mongoMemoryServer.getDbName();
-    }
     if (process.env.ENV == 'DEV' || !process.env.ENV) {
         mongoUri =  EV.mongoUri
         mongoDBName = EV.mongoDBName;

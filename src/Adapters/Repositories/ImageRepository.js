@@ -6,9 +6,6 @@ class ImageRepository {
     constructor(DBConnection) {
         this.DBConnection = DBConnection;
         this.collection = this.DBConnection.obtainCollection('image');
-        this.storageRef = firebase.storage().ref();
-
-
     }
 
     async getOne(id) {
@@ -48,47 +45,6 @@ class ImageRepository {
                 console.log("Error in insert on ImageRepository: ", error);
             });
     }
-
-    async saveImage(object,file) {
-        let context = this;
-        let filename = object.title+(new Date().getMilliseconds())+".jpg";
-        let ref = this.storageRef.child(filename);
-        ref.put(file).then(function(snapshot) {
-            console.log('Uploaded a blob or file!');
-        }).catch(e => {
-            console.log("Error uploading image",e.toString())
-        });
-        let imageRef = storageRef.child(filename);
-        let imageUrl = imageRef.getDownloadURL().then(function(url) {
-            // Insert url into an <img> tag to "download"
-        }).catch(function(error) {
-
-            // A full list of error codes is available at
-            // https://firebase.google.com/docs/storage/web/handle-errors
-            switch (error.code) {
-                case 'storage/object-not-found':
-                    // File doesn't exist
-                    break;
-
-                case 'storage/unauthorized':
-                    // User doesn't have permission to access the object
-                    break;
-
-                case 'storage/canceled':
-                    // User canceled the upload
-                    break;
-
-                case 'storage/unknown':
-                    // Unknown error occurred, inspect the server response
-                    break;
-            }
-        });
-        object.url = imageUrl;
-        return  context.insert(object);
-
-    }
-
-
 
     async update(id, object) {
         let o_id;
