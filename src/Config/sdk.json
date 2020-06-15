@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "galleria-de-arte",
+  "private_key_id": "b0d56d5407839a00eced919589f38c8bd6f3c59f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCZUfOvRZrrBe6h\n0iVHFlPewpMY4Hw8a2BDQnUOkMpuX6d7elX5+FiV32nHrhkQ8qwbaCRAbmwjJKRO\nfDkKAn86P825hp6djaFHQ0vUDdBBXhi3HAdJbP94eZxaGbEFQL70SbzUYaQblwu/\nFG2XU0W94+AcMKwcS0o1iYv7mpKZkgS9PUgAeTjMOYH7vYQFy3bJWOfKuW0u4BvY\niqDLbIJgMaWjg8b8YKQPATgmgIlYty30pc0kK+mIyPt5KoInZQtT2VQ59Pb9ADVI\nozU+O4UEL2Ht+YUqWsgda39NuY36a51MG21w3pK/IBklSeSWy+mZ9PHXVXAWmfQc\nJhAVnA2NAgMBAAECggEAGOEgUMUUBEbQaDB0baJtJjT/TzZgWqKW+pseaShsPPhn\nMmWR7ZAT+fAI14cEGMi0Tnc6CL2SbSp9QiIs1Fe+4wom/U/fzdPFg82jEKxUKsNU\n8ePJt+vI0fkz+rf4DpDo27Xaf0E/8t0yIgXz2a5A3zVK8PAiAa5jAqiJD2FQIDy9\n4x1uA9HzkRl+P7HTfYxhTJV1W7FIerhZJZRqtDTN7RvvJpkZl+SmaJ5vnANOaSLr\nOlC6pBIziee/PpKQ03onPS7g4M8IKvImipAP8/AhPqUPDhWJM90qB1KZ5T4BSqdC\nX7GrM/VqCWtrX00HM0k+a5uzxJBgQYfQWVPQ3XO7YQKBgQDXf9+fFVjhJELso2Ss\nHTBJpf15UZUNBB3w5g169sM9149nMEdEavh3pziPQbIXnS/q1fL0HL2xvTxHPH83\njc25B3pDHvk2ftG4uAdHfO2bvvZhNkdeiGg1cCLCq7UxqCxgzonATJbK3PnrYf53\nCv2xmcdNwFvTwlHJAmbp5rsGYQKBgQC2In/3Im7A9T0vLEHfzR54BWMl5HUzCbSp\nGTH1Po9TsGwTXEWJ2AvkYBvMjTwCi5MxcgZllZqOVNyT1A6ALWA0D9C6OZZOlB2W\nnJgvZkYjN5pF5zS0ZSs8Li5CJWkbdh5/Z+Wtm6mtAs9WgWfntD917GyatprwkMXy\nlozXCjV+rQKBgQCJn/KyaDGw5zWOZvMeMC3sewOb/QwRmfV9KY6mXv1le0rr/Zsm\nCKLR14t5gd0403wMn8JfQBOtdUsPu4ULd5ZQeoQMZbWGpgtNyslrUE92zcgPYVjG\n+JqEti6c4IgBRIPC92Rl2QPcXq+FMboPUIegarMr5pM+c7VDiDMtYdtDQQKBgC8P\nvwz2grOtKoAT6XmQoLzWd4YFABuN+HZxIi2CWrp/LY3bG8TAZGJASy6Rl934frIa\nCnkZLPR2DQDNnGmWT/Nj2sUjuCjZsMOH9vLYdGsJJP3G/iFWutM0A5Pn4r7LyJmX\nGQvA2xjvTu/FRDnkozkvO+jGIkbiwaMrL30pECWJAoGBAL66ub/BdnwUJ6aIrDvJ\nvBRBh52pAsku6VyV3xYLiC2f4knXmlHcJCC272UvoashTT/yS/618AA4OgQhKOD+\n3nQecREnvyWIWcNMlHX7G4roV7ASwlVEZDdSt3ObrRnGbPY2B1iUNobGTC/Vg+z3\nhoes+sOwL4UU30Y+ABt+NFDy\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-8eovi@galleria-de-arte.iam.gserviceaccount.com",
+  "client_id": "102535840472073967714",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-8eovi%40galleria-de-arte.iam.gserviceaccount.com"
+}

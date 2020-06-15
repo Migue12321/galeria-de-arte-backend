@@ -1,0 +1,51 @@
+{
+  "name": "galeria-de-arte",
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ]
+  },
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "nodemon src/Adapters/server.js",
+    "start-test": "cross-env ENV=TEST nodemon src/Adapters/server.js",
+    "coverage": "jest --collectCoverage",
+    "test": "jest",
+    "dev": "nodemon src/Adapters/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": " "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/firestore": "^2.6.0",
+    "aws-sdk": "^2.553.0",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase": "^7.2.2",
+    "firebase-admin": "^8.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.2.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.5.6",
+    "mongodb-memory-server": "^6.0.1",
+    "mongoose": "^5.7.3",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.4.6",
+    "nodemon": "^1.19.2",
+    "save": "^2.4.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
