@@ -4,7 +4,7 @@ class CreateImageRequestModel {
         let title = body.title ? body.title.trim() : "";
         let width = body.width ? body.width.trim() : "";
         let height = body.height ? body.height.trim() : "";
-        let forSale = body.forSale ? body.forSale.trim() : "";
+        let forSale = body.forSale;
         let url = body.url;
         return {
             title:title,

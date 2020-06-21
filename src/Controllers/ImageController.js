@@ -15,7 +15,7 @@ const ImageInteractor = require('../Interactors/ImageInteractor');
     imageRepository = new ImageRepository(CONNECTIONS.database);
 })();
 
-router.get("", async function (request, response) {
+router.get("/", async function (request, response) {
     let imageInteractor = new ImageInteractor(imageRepository);
     let users = await imageInteractor.getAll()
         .catch(error => {
@@ -56,7 +56,7 @@ router.post("/", async function (request, response) {
     response.send(isInserted);
 });
 
-router.put("", async function (request, response) {
+router.put("/", async function (request, response) {
     let id = request.body.id;
     let updateDoctorRequestModel = new UpdateImageRequestModel();
     let requestModel = updateDoctorRequestModel.getRequestModel(request.body);

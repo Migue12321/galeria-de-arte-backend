@@ -1,4 +1,4 @@
-const DoctorValidator = require('../Entities/Validators/DoctorValidator');
+const ImageValidator = require('../Entities/Validators/ImageValidator');
 
 class ImageInteractor {
 
@@ -18,12 +18,12 @@ class ImageInteractor {
     }
 
     async create(doctor) {
-        let doctorValidator = new DoctorValidator();
-        let response = doctorValidator.validateCreate(doctor);
-        if(!response.success)
-            return response;
+        let imageValidator = new ImageValidator();
+        let response = imageValidator.validateCreate(doctor);
+        // if(!response.success)
+        //     return response;
         try {
-            await this.imageRepository.insert(doctor);
+           response = await this.imageRepository.insert(doctor);
         } catch (error) {
             return this.prepareDBErrorResponse(error);
         }
@@ -44,8 +44,8 @@ class ImageInteractor {
     }
 
     async update(idAuth, user) {
-        let doctorValidator = new DoctorValidator();
-        let response = doctorValidator.validateUpdate(idAuth, user);
+        let imageValidator = new ImageInteractor();
+        let response = imageValidator.validateUpdate(idAuth, user);
         if (!response.success) {
             return response;
         }
