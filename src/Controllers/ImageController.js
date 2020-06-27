@@ -69,27 +69,14 @@ router.put("/", async function (request, response) {
     }
     response.send(putResponse);
 });
-router.put("/update-attention-schedule/", async function (request, response) {
-    let id = request.body.id;
-    let updateDoctorRequestModel = new UpdateImageRequestModel();
-    let requestModel = updateDoctorRequestModel.getRequestModel(request.body);
-    let doctorInteractor = new ImageInteractor(imageRepository);
-    let putResponse = false;
-    try {
-        putResponse = await doctorInteractor.updateAttentionSchedule(id, requestModel);
-    } catch (error) {
-        console.log("ERROR updating a doctor:", error);
-    }
-    response.send(putResponse);
-});
-
 
 router.delete("/:id", async function (request, response) {
     let id = request.params.id;
-    let doctorInteractor = new ImageInteractor(imageRepository);
+    console.log(id)
+    let imageInteractor = new ImageInteractor(imageRepository);
     let deleteResponse = false;
     try {
-        deleteResponse = await doctorInteractor.delete(id);
+        deleteResponse = await imageInteractor.delete(id);
     } catch (error) {
         console.log("ERROR deleting a doctor with id: "+ id + ": ", error);
     }

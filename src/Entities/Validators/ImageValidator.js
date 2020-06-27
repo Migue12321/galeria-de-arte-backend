@@ -1,13 +1,13 @@
-class DoctorValidator {
+class ImageValidator {
 
     validateCreate(image) {
         return this.validate(image);
     }
 
-    validateUpdate(objectID, doctor) {
+    validateUpdate(objectID, image) {
         let response = { success: true, message: "" };
         let mongoIdResponse = this.validateUserID(objectID);
-        let responseValidator = this.validate(doctor.$set);
+        let responseValidator = this.validate(image.$set);
         if(!(mongoIdResponse)){
             response = { success: false,  message: "Error validating ID "};
         }
@@ -52,20 +52,6 @@ class DoctorValidator {
             return false;
 
     }
-
-    noStrangerCharacterArePresent(word) {
-        let regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ-ñÑ ]+$/;
-        return regex.test(word);
-    }
-    nonStandardsAsciiArePresent(word) {
-        let regex = /[^\x00-\x7F]+/;
-        return regex.test(word);
-    }
-
-    validatePhoneNumber(number){
-        let regex = /(\+591\b)(?!.*\1)((\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){7})/;
-        return regex.test(number);
-    }
 }
 
-module.exports = DoctorValidator;
+module.exports = ImageValidator;

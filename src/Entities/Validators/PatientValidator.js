@@ -6,14 +6,7 @@ class PatientValidator {
 
     validateUpdate(objectID, patient) {
         let response = { success: true, message: "" };
-        let mongoIdResponse = this.validateUserID(objectID);
-        let responseValidator = this.validate(patient.$set);
-        if(!(mongoIdResponse)){
-            response = { success: false,  message: "Error validating ID "};
-        }
-        if(!responseValidator.success){
-            response = responseValidator;
-        }
+
         return response;
     }
 

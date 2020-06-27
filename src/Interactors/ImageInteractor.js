@@ -31,26 +31,24 @@ class ImageInteractor {
     }
 
     async delete(idAuth) {
-        let response;
+        let response = {success: false, message:""};
         try {
-            let doctor = await this.getImageById(idAuth)
-            await this.imageRepository.deleteDoctorAccount(doctor[0].accountId,doctor[0]._id);
-             response = this.prepareDBDeleteResponse(idAuth, response);
-
+            await this.imageRepository.delete(idAuth);
+            response = this.prepareDBDeleteResponse(idAuth, response);
         } catch (error) {
             return this.prepareDBErrorResponse(error);
         }
         return response;
     }
 
-    async update(idAuth, user) {
-        let imageValidator = new ImageInteractor();
-        let response = imageValidator.validateUpdate(idAuth, user);
+    async update(idAuth, image) {
+        let imageValidator = new ImageValidator();
+        let response = imageValidator.validateUpdate(idAuth, image);
         if (!response.success) {
             return response;
         }
         try {
-            await this.imageRepository.update(idAuth, user);
+            await this.imageRepository.update(idAuth, image);
         } catch (error) {
             return this.prepareDBDeleteResponse(error);
         }

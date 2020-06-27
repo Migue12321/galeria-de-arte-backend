@@ -60,24 +60,6 @@ class ImageRepository {
             });
     }
 
-    async deleteDoctorAccount(uid, mongoId) {
-        let context = this;
-        return await admin.auth().deleteUser(uid)
-        .then(function() {
-            console.log('Successfully deleted user');
-            return context.delete(mongoId).then(() =>{
-                return { success: true, message: "Successfully deleted doctor" };
-            }).catch(error => {
-                console.log("Error in delete on ImageRepository: ", error);
-                return {success: false, message: error.toString()};
-            });
-        })
-        .catch(function(error) {
-          console.log('Error deleting user:', error);
-          return { success: false, message: error.toString() };
-        });
-    }
-
     async delete(id) {
         let o_id;
         if (id)
