@@ -46,6 +46,6 @@
     "save": "^2.4.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "jest": "^29.4.1"
   }
 }
