@@ -55,10 +55,10 @@ class ImageRepository {
     let searchCriteria = { _id: o_id };
     return this.DBConnection.update(searchCriteria, object, this.collection)
       .then(() => {
-        console.log("The doctor was updated successfully");
+        console.log("The image was updated successfully");
         return {
           success: true,
-          message: "The doctor was updated successfully",
+          message: "The image was updated successfully",
         };
       })
       .catch((error) => {

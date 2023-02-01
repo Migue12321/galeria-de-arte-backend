@@ -16,13 +16,15 @@ class ImageInteractor {
     return await this.imageRepository.getAllForSale();
   }
 
-  async create(doctor) {
+  async create(image) {
     let imageValidator = new ImageValidator();
-    let response = imageValidator.validateCreate(doctor);
-    try {
-      response = await this.imageRepository.insert(doctor);
-    } catch (error) {
-      return this.prepareDBErrorResponse(error);
+    let response = imageValidator.validateCreate(image);
+    if(response.success){
+        try {
+          response = await this.imageRepository.insert(image);
+        } catch (error) {
+          return this.prepareDBErrorResponse(error);
+        }
     }
     return response;
   }

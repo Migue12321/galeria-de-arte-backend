@@ -20,27 +20,37 @@ class ImageValidator {
     let response = { success: true, message: "" };
     if (!this.validateTitle(image.title)) {
       console.log("title");
-      response = { success: false, message: "Error validating title" };
+      return { success: false, message: "Error validating title" };
     }
     if (!this.validateNumber(image.height)) {
       console.log("height");
-
-      response = { success: false, message: "Error validating height" };
+      return { success: false, message: "Error validating height" };
     }
     if (!this.validateNumber(image.width)) {
       console.log("width");
-      response = { success: false, message: "Error validating width" };
+      return { success: false, message: "Error validating width" };
+    }
+    if (!this.validateUrl(image.url)) {
+      console.log("url");
+      return { success: false, message: "Error validating url" };
     }
     return response;
   }
 
-  validateTitle(name) {
-    console.log(name);
-    return name && name.length != 0 && name.length < 200;
+  validateTitle(title) {
+    console.log(title);
+    return title && title.length != 0 && title.length < 200 && title != null;
   }
 
-  validateUserID(doctorID) {
-    return doctorID;
+  validateUrl(url) {
+    console.log(url);
+    let regex =
+      /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+    return regex.test(url);
+  }
+
+  validateUserID(imageId) {
+    return imageId;
   }
 
   validateNumber(number) {

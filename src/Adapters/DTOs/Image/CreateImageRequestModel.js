@@ -1,8 +1,8 @@
 class CreateImageRequestModel {
   getRequestModel(body) {
     let title = body.title ? body.title.trim() : "";
-    let width = body.width ? body.width.trim() : "";
-    let height = body.height ? body.height.trim() : "";
+    let width = body.width;
+    let height = body.height;
     let forSale = body.forSale;
     let url = body.url;
     return {
