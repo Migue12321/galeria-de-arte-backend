@@ -1,6 +1,6 @@
 const ImageValidator = require("../Entities/Validators/ImageValidator");
 
-class ImageInteractor {
+class ImageService {
   constructor(imageRepository) {
     this.imageRepository = imageRepository;
   }
@@ -19,12 +19,12 @@ class ImageInteractor {
   async create(image) {
     let imageValidator = new ImageValidator();
     let response = imageValidator.validateCreate(image);
-    if(response.success){
-        try {
-          response = await this.imageRepository.insert(image);
-        } catch (error) {
-          return this.prepareDBErrorResponse(error);
-        }
+    if (response.success) {
+      try {
+        response = await this.imageRepository.insert(image);
+      } catch (error) {
+        return this.prepareDBErrorResponse(error);
+      }
     }
     return response;
   }
@@ -75,4 +75,4 @@ class ImageInteractor {
   }
 }
 
-module.exports = ImageInteractor;
+module.exports = ImageService;

@@ -26,17 +26,17 @@ let FirebaseConnection;
   let mongoUri;
   let mongoDBName;
   if (process.env.ENV == "TEST") {
-    mongoUri = await mongoMemoryServer.getConnectionString();
+    mongoUri = await mongoMemoryServer.getUri();
     mongoDBName = await mongoMemoryServer.getDbName();
   }
 
   if (process.env.ENV == "DEV" || !process.env.ENV) {
-    mongoUri = EV.mongoUri;
-    mongoDBName = EV.mongoDBName;
+    mongoUri = EV.mongo_uri;
+    mongoDBName = EV.mongo_DB_Name;
   }
   if (process.env.ENV == "PROD" || !process.env.ENV) {
-    mongoUri = EV.mongoUri;
-    mongoDBName = EV.mongoDBName;
+    mongoUri = EV.mongo_uri;
+    mongoDBName = EV.mongo_DB_Name;
   }
   DBConnection = await DBConnectionFactory.createConnection(
     "mongo",

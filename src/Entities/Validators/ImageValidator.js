@@ -38,6 +38,7 @@ class ImageValidator {
   }
 
   validateTitle(title) {
+    console.log(title);
     return title && title.length != 0 && title.length < 200 && title != null;
   }
 
