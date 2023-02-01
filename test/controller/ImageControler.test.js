@@ -19,11 +19,10 @@ let newImage = {
 
 let invalidImage = {
     "title": null,
-    // "width": null,
-    // "height": 45,
-    // "forSale": true,
-    // "url": "badFakeurl",
-
+    "width": null,
+    "height": 45,
+    "forSale": true,
+    "url": "badFakeurl",
 };
 
 let modelName = "Images";
@@ -51,7 +50,6 @@ describe(`GET method for ${modelName}`, () => {
             let currentImage = response.data.find(element => element.title === image.title);
             response = await axios.get(route + '/' + currentImage._id);
             await axios.delete(route + '/' + currentImage._id);
-            console.log(response)
             expect(response.status).toBe(200);
             expect(response.data[0].title).toEqual(image.title);
             expect(response.data).toEqual(expect.any(Object));
@@ -115,7 +113,6 @@ describe(`POST method for ${modelName}`, () => {
         try {
             await axios.post(route, invalidImage);
             let response = await axios.get(route);
-            console.log(response.data,"########")
             expect(response.data.length).toEqual(0);
             expect(response.status).toBe(200);
             done();

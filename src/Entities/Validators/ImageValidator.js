@@ -38,12 +38,10 @@ class ImageValidator {
   }
 
   validateTitle(title) {
-    console.log(title);
     return title && title.length != 0 && title.length < 200 && title != null;
   }
 
   validateUrl(url) {
-    console.log(url);
     let regex =
       /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     return regex.test(url);
@@ -54,7 +52,7 @@ class ImageValidator {
   }
 
   validateNumber(number) {
-    if (number) {
+    if (!isNaN(number)) {
       return true;
     } else return false;
   }
