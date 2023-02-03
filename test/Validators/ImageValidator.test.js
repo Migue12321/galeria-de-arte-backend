@@ -1,6 +1,5 @@
 const axios = require("axios");
 const route = "http://localhost:4000/api/image";
-// import ImageValidator from '../../src/Entities/Validators/ImageValidator';
 const ImageValidator = require("../../src/Entities/Validators/ImageValidator");
 
 const imageValidator = new ImageValidator();

@@ -78,45 +78,6 @@ class ImageRepository {
       }
     );
   }
-
-  async getAllDoctorAccounts(nextPageToken) {
-    let users = Array(0);
-    return admin
-      .auth()
-      .listUsers(1000, nextPageToken)
-      .then(function (listUsersResult) {
-        listUsersResult.users.forEach(function (userRecord) {
-          users.push({
-            id: userRecord.toJSON().uid,
-            email: userRecord.toJSON().email,
-            username: userRecord.toJSON().displayName,
-          });
-        });
-        if (listUsersResult.pageToken) {
-          listAllUsers(listUsersResult.pageToken);
-        }
-        return users;
-      })
-      .catch(function (error) {
-        console.log("Error listing users:", error);
-      });
-  }
-
-  async getDoctorAccountById(id) {
-    return admin
-      .auth()
-      .getUser(id)
-      .then(function (userRecord) {
-        return {
-          id: userRecord.toJSON().uid,
-          email: userRecord.toJSON().email,
-          username: userRecord.toJSON().displayName,
-        };
-      })
-      .catch(function (error) {
-        console.log("Error fetching user data:", error);
-      });
-  }
 }
 
 module.exports = ImageRepository;

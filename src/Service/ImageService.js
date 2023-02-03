@@ -48,21 +48,12 @@ class ImageService {
     }
     try {
       await this.imageRepository.update(idAuth, image);
+      return this.prepareDBDeleteResponse(idAuth)
     } catch (error) {
-      return this.prepareDBDeleteResponse(error);
+      return this.prepareDBErrorResponse(error);
     }
-    return response;
   }
 
-  async updateAttentionSchedule(idAuth, attentionSchedule) {
-    let response = true;
-    try {
-      this.imageRepository.update(idAuth, attentionSchedule);
-    } catch (error) {
-      return this.prepareDBDeleteResponse(error);
-    }
-    return response;
-  }
 
   prepareDBDeleteResponse(id, response) {
     response = { success: true, message: "" };
