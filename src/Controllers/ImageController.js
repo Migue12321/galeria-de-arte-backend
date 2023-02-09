@@ -31,13 +31,6 @@ router.get("/:id", async function (request, response) {
   });
   response.send(image);
 });
-router.get("/for-sale", async function (request, response) {
-  let imageService = new ImageService(imageRepository);
-  let image = await imageService.getAllForSale().catch((error) => {
-    console.log("ERROR getting images: ", error);
-  });
-  response.send(image);
-});
 
 router.post("/", async function (request, response) {
   let imageRequestModel = new createImageRequestModel();

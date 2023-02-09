@@ -12,9 +12,6 @@ class ImageService {
   async getAll() {
     return await this.imageRepository.getAll();
   }
-  async getAllForSale() {
-    return await this.imageRepository.getAllForSale();
-  }
 
   async create(image) {
     let imageValidator = new ImageValidator();

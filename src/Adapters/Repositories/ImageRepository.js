@@ -27,17 +27,6 @@ class ImageRepository {
     });
   }
 
-  async getAllForSale() {
-    let query = { forSale: true };
-    return this.collection
-      .find(query)
-      .toArray()
-      .catch((error) => {
-        console.log("Error recovering for sale images:", error);
-        return { success: false, message: error.toString() };
-      });
-  }
-
   async insert(object) {
     return this.DBConnection.insert(object, this.collection)
       .then(() => {
